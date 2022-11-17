@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Game from "./components/Game";
+import ImageSelector from "./components/imageSelctor";
+import Anime from "./img/anime.jpg";
+import Universe113 from "./img/universe-113.jpg";
+import "./style/app.css"
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ImageSelector />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/anime" element={<Game photo={Anime} />} />
+          <Route path="/universe_113" element={<Game photo={Universe113} />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
 export default App;
