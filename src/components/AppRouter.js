@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Anime from "../img/anime.jpg";
-import Universe113 from "../img/universe-113.jpg";
+import Anime from "../img/board/anime.jpg";
+import Universe113 from "../img/board/universe-113.jpg";
+import locNar from "../img/board/the-loc-nar.jpg";
 import Home from "./Home";
 import Game from "./Game";
 
@@ -12,6 +13,7 @@ const ReactRouter = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/anime" element={<Game photo={Anime} />} />
                 <Route path="/universe_113" element={<Game photo={Universe113} />} />
+                <Route path="/loc_nar" element={<Game photo={locNar} />} />
             </Routes>
         </BrowserRouter>
     )

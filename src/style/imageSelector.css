@@ -1,0 +1,30 @@
+.image-selector-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+}
+
+@media (max-width: 800px) {
+    .image-selector-nav {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+.image-selector-nav>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.image-selector-nav>a>img {
+    width: 70%;
+    height: 15rem;
+}
+
+.image-selector-nav>a>div {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black;
+}
