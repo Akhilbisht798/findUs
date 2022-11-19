@@ -7,13 +7,16 @@ import Home from "./Home";
 import Game from "./Game";
 
 const ReactRouter = () => {
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/anime" element={<Game photo={Anime} />} />
-                <Route path="/universe_113" element={<Game photo={Universe113} />} />
-                <Route path="/loc_nar" element={<Game photo={locNar} />} />
+                <Route path="/anime" element={<Game photo={Anime} name={"anime"} />} />
+                <Route path="/universe_113" element={<Game photo={Universe113} name={"universe_113"}
+                />} />
+                <Route path="/loc_nar" element={<Game photo={locNar} name={"loc_nar"}
+                />} />
             </Routes>
         </BrowserRouter>
     )
