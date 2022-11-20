@@ -8,7 +8,6 @@ const Modal = styled.div`
     background-color: rgba(255, 255, 255, 0.8);
     display: grid;
     padding: 0.4rem;
-    width: 10%;
     border-radius: 7px;
     transform: translate(-20%, -30%);
 `;
@@ -22,12 +21,10 @@ const Char = styled.div`
     }
 `;
 
-//TODO: Style The component
-
 const SelectCharecter = (props) => {
 
     const coordsCheck = (e) => {
-        const index = e.target.dataset.index; // might be bad. Use name to find the charecter. Or Make index Consistent.
+        const index = e.target.dataset.index;
         const x = props.charecter[index].xCoord;
         const y = props.charecter[index].yCoord;
         if (props.selectedCoords.xCoord >= x - 1 && props.selectedCoords.xCoord <= x + 1) {

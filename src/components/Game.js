@@ -3,6 +3,7 @@ import SelectCharecter from "./GameHelper/SelectCharecter";
 import "../style/game.css"
 import { db } from "../firebase-config"
 import { collection, getDocs } from "firebase/firestore"
+import GameHeader from "./GameHelper/GameHeader";
 
 const Game = (props) => {
 
@@ -52,12 +53,9 @@ const Game = (props) => {
         setShowSelectChar(false)
     }
 
-
-    //TODO: include a header Section that keeps count of time.
-    //TODO: include charecter photo and give user feedback if they found the charecter or not
-    //TODO: Add player record in records.
     return (
         <div>
+            <GameHeader charecter={props.charecter} />
             <img src={props.photo} onClick={onClick} className="game-photo" />
             {showSelectChar && (
                 <SelectCharecter dialogPos={dialogPos} selectedCoords={selectedPos}
