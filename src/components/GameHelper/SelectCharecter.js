@@ -5,18 +5,24 @@ const Modal = styled.div`
     position: fixed;
     top: ${props => props.y}px;
     left: ${props => props.x}px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     display: grid;
-    gap: 0.5rem;
+    padding: 0.4rem;
+    width: 10%;
+    border-radius: 7px;
+    transform: translate(-20%, -30%);
 `;
 
 const Char = styled.div`
     padding: 3px;
     text-align: center;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(255,255,255);
+    }
 `;
 
-//TODO: When charecter is found setFound to be true.
-//TODO: TO Show Charecter that are not found.
+//TODO: Style The component
 
 const SelectCharecter = (props) => {
 

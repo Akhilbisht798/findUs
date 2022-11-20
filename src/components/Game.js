@@ -52,6 +52,10 @@ const Game = (props) => {
         setShowSelectChar(false)
     }
 
+
+    //TODO: include a header Section that keeps count of time.
+    //TODO: include charecter photo and give user feedback if they found the charecter or not
+    //TODO: Add player record in records.
     return (
         <div>
             <img src={props.photo} onClick={onClick} className="game-photo" />

@@ -4,9 +4,9 @@
     gap: 3em;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .image-selector-nav {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     }
 }
 
