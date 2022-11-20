@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import Timer from "./timer";
 //TODO: include a header Section that keeps count of time.
 //TODO: include charecter photo and give user feedback if they found the charecter or not
 //TODO: Add player record in records.
@@ -22,9 +22,6 @@ const ImageDiv = styled.img`
         width: 50px; 
         height: 50px;
     }
-    &:hover {
-        transform: scale(2);
-    }   
   }
 `;
 
@@ -37,7 +34,9 @@ const OuterImageDiv = styled.div`
 const GameHeader = (props) => {
     return (
         <GameHeaderDiv>
-            <div>Home</div>
+            <div><a href="/" style={{ "text-decoration": "none", "color": "white", "font-size": "1.5rem" }}
+            >Home</a></div>
+            <Timer />
             <OuterImageDiv>
                 {props.charecter.map((curr) => {
                     return (
