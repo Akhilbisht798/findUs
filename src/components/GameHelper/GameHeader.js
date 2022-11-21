@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import AddLeaderBoard from "./LeaderBoard";
 import Timer from "./timer";
-//TODO: include a header Section that keeps count of time.
-//TODO: include charecter photo and give user feedback if they found the charecter or not
 //TODO: Add player record in records.
 
 const GameHeaderDiv = styled.div`
@@ -41,14 +40,21 @@ const Para = styled.p`
   text-align: center;
 `;
 
+//TODO: Create a LeaderBoard. 
+//TODO: Add Player to leaderBoard.
+
 const GameHeader = (props) => {
+
+    const [timeTaken, setTimeTaken] = useState("");
+
+    const SetTimeTaken = (val) => {
+        setTimeTaken(val);
+    }
 
     return (
         <GameHeaderDiv>
             <div><Linker href="/">Home</Linker></div>
-            {!props.gameOver && (
-                <Timer />
-            )}
+            <Timer gameOver={props.gameOver} setTime={SetTimeTaken} />
             <OuterImageDiv>
                 {props.charecter.map((curr) => {
                     return (
@@ -59,6 +65,9 @@ const GameHeader = (props) => {
                     )
                 })}
             </OuterImageDiv>
+            {props.gameOver && (
+                <AddLeaderBoard map={props.map + "_LeaderBoard"} Time={timeTaken} />
+            )}
         </GameHeaderDiv>
     )
 }

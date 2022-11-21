@@ -5,7 +5,7 @@ const ShowDate = styled.p`
     font-size: 2rem;
 `;
 
-const Timer = () => {
+const Timer = (props) => {
 
     const [seconds, setSeconds] = useState(() => 0);
 
@@ -24,6 +24,10 @@ const Timer = () => {
     }
 
     useEffect(() => {
+        props.setTime(formatDate());
+    }, [props.gameOver])
+
+    useEffect(() => {
         setTimeout(() => {
             setSeconds(seconds + 1);
         }, 1000)
@@ -31,7 +35,9 @@ const Timer = () => {
 
     return (
         <div>
-            <ShowDate>{formatDate()}</ShowDate>
+            {!props.gameOver && (
+                <ShowDate>{formatDate()}</ShowDate>
+            )}
         </div>
     )
 }

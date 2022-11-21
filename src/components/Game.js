@@ -74,7 +74,7 @@ const Game = (props) => {
 
     return (
         <div>
-            <GameHeader charecter={props.charecter} gameOver={gameOver} />
+            <GameHeader charecter={props.charecter} gameOver={gameOver} map={props.name} />
             <img src={props.photo} onClick={onClick} className="game-photo" />
             {showSelectChar && (
                 <SelectCharecter dialogPos={dialogPos} selectedCoords={selectedPos}
