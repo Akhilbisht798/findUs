@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import SelectCharecter from "./GameHelper/SelectCharecter";
 import "../style/game.css"
 import { db } from "../firebase-config"
@@ -11,6 +11,8 @@ const Game = (props) => {
     const [dialogPos, setDialog] = useState({});
     const [selectedPos, setSelectedPos] = useState({});
     const [charecterCoords, setCharecterCoords] = useState([]);
+    const [forceUpdate, setForceupdate] = useReducer(x => x + 1, 0)
+    const [gameOver, setGameOver] = useState(false);
     const Coords = collection(db, props.name);
 
     useEffect(() => {
@@ -47,15 +49,32 @@ const Game = (props) => {
 
     const charecterFound = (newData) => {
         setCharecterCoords(newData);
+        setForceupdate();
     }
 
     const showDialogBox = () => {
         setShowSelectChar(false)
     }
 
+    useEffect(() => {
+        const GameOver = () => {
+            for (let i = 0; i < charecterCoords.length; i++) {
+                if (charecterCoords[i].found === false) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        const Game = GameOver();
+        if (Game && charecterCoords.length !== 0) {
+            setGameOver(true);
+        }
+
+    }, [forceUpdate])
+
     return (
         <div>
-            <GameHeader charecter={props.charecter} />
+            <GameHeader charecter={props.charecter} gameOver={gameOver} />
             <img src={props.photo} onClick={onClick} className="game-photo" />
             {showSelectChar && (
                 <SelectCharecter dialogPos={dialogPos} selectedCoords={selectedPos}

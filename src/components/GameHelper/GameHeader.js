@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Timer from "./timer";
 //TODO: include a header Section that keeps count of time.
@@ -31,18 +31,30 @@ const OuterImageDiv = styled.div`
     justify-content: center;
 `;
 
+const Linker = styled.a`
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+`;
+
+const Para = styled.p`
+  text-align: center;
+`;
+
 const GameHeader = (props) => {
+
     return (
         <GameHeaderDiv>
-            <div><a href="/" style={{ "text-decoration": "none", "color": "white", "font-size": "1.5rem" }}
-            >Home</a></div>
-            <Timer />
+            <div><Linker href="/">Home</Linker></div>
+            {!props.gameOver && (
+                <Timer />
+            )}
             <OuterImageDiv>
                 {props.charecter.map((curr) => {
                     return (
                         <div>
                             <ImageDiv src={curr.img} />
-                            <p style={{ "text-align": 'center' }}>{curr.name}</p>
+                            <Para>{curr.name}</Para>
                         </div>
                     )
                 })}

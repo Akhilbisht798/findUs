@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ShowDate = styled.p`
     font-size: 2rem;
-`
+`;
 
 const Timer = () => {
 
