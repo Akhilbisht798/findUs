@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import AddLeaderBoard from "./LeaderBoard";
+import AddLeaderBoard from "./AddPlayer";
 import Timer from "./timer";
 //TODO: Add player record in records.
 

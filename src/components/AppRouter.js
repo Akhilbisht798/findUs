@@ -14,6 +14,7 @@ import Gyrados from "../img/Charecters/gyrados.png"
 import Jake from "../img/Charecters/Jake.png"
 import Waldo from "../img/Charecters/waldo.png"
 import tommy from "../img/Charecters/tommy.png"
+import LeaderBoard from "./LeaderBoard";
 
 const ReactRouter = () => {
 
@@ -45,6 +46,7 @@ const ReactRouter = () => {
                     charecter={UniverseCharecter} />} />
                 <Route path="/loc_nar" element={<Game photo={locNar} name={"loc_nar"}
                     charecter={loc_nar_Charecter} />} />
+                <Route path="/LeaderBoard" element={<LeaderBoard />} />
             </Routes>
         </BrowserRouter>
     )
