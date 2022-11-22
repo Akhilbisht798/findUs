@@ -33,5 +33,5 @@ const AddLeaderBoard = (props) => {
         </AddPlayer>
     )
 }
-
+// orderBy('Score', 'desc')
 export default AddLeaderBoard;
