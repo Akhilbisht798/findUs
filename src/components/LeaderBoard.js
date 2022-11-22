@@ -2,6 +2,28 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import { collection, getDocs } from "firebase/firestore"
 import IndiLeaderBoard from "./LeaderBoardHelper.js/indiLeader";
+import styled from "styled-components";
+import UniverseImage from "../img/icon/universe_113icon.png";
+import loc_narImage from "../img/icon/loc-naricon.png";
+import AnimeImage from "../img/board/anime.jpg"
+
+const ImageHolder = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    @media (max-width: 1220px) {
+        grid-template-columns: repeat(auto-fill, minmax(25em, 1fr))
+    }
+`
+
+const Icon = styled.img`
+    padding: 1em;
+    width: 25em;
+    height: 15em;
+    transition: 0.5s;
+    &:hover {
+        scale: 1.1;
+    }
+`
 
 const LeaderBoard = () => {
     const [anime, setAnime] = useState([]);
@@ -49,14 +71,11 @@ const LeaderBoard = () => {
     return (
         <div>
             <h1>See, How Good are you in this Game.</h1>
-            <ul>
-                <li><a data-name="anime" onClick={changeLeaderBoard}
-                >Anime</a></li>
-                <li><a data-name="universe113" onClick={changeLeaderBoard}
-                >Universe113</a></li>
-                <li><a data-name="loc_nar" onClick={changeLeaderBoard}
-                >Loc Nar</a></li>
-            </ul>
+            <ImageHolder>
+                <Icon src={AnimeImage} data-name="anime" onClick={changeLeaderBoard} />
+                <Icon src={UniverseImage} data-name="universe113" onClick={changeLeaderBoard} />
+                <Icon src={loc_narImage} data-name="loc_nar" onClick={changeLeaderBoard} />
+            </ImageHolder>
             {showAnime && (
                 <IndiLeaderBoard board={anime} />
             )}
