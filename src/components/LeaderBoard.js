@@ -25,6 +25,24 @@ const Icon = styled.img`
     }
 `
 
+const Heading = styled.h1`
+    text-align: center;
+    background-color: #222;
+    padding: 0.7em;
+`;
+
+const ParaR = styled.span`
+    font-size: 2rem;
+    font-weight: 600;
+    color: red;
+`;
+
+const ParaB = styled.span`
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+`;
+
 const LeaderBoard = () => {
     const [anime, setAnime] = useState([]);
     const [loc_nar, setLoc_nar] = useState([]);
@@ -70,20 +88,20 @@ const LeaderBoard = () => {
 
     return (
         <div>
-            <h1>See, How Good are you in this Game.</h1>
+            <Heading><ParaR>Leaders </ParaR><ParaB>Board</ParaB></Heading>
             <ImageHolder>
                 <Icon src={AnimeImage} data-name="anime" onClick={changeLeaderBoard} />
                 <Icon src={UniverseImage} data-name="universe113" onClick={changeLeaderBoard} />
                 <Icon src={loc_narImage} data-name="loc_nar" onClick={changeLeaderBoard} />
             </ImageHolder>
             {showAnime && (
-                <IndiLeaderBoard board={anime} />
+                <IndiLeaderBoard board={anime} name="Anime Leaders-Board" />
             )}
             {showLoc_Nar && (
-                <IndiLeaderBoard board={loc_nar} />
+                <IndiLeaderBoard board={loc_nar} name="Loc Nar Leaders-Board" />
             )}
             {showUniverse && (
-                <IndiLeaderBoard board={Universe113} />
+                <IndiLeaderBoard board={Universe113} name="Universe-113 Leaders-Board" />
             )}
         </div>
     )

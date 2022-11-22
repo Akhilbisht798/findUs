@@ -22,6 +22,7 @@ const Para = styled.div`
 const IndiLeaderBoard = (props) => {
     return (
         <div>
+            <Heading>{props.name}</Heading>
             <LeaderDivs>
                 <Heading>Rank</Heading>
                 <Heading>Player</Heading>

@@ -5,8 +5,9 @@ import Timer from "./timer";
 //TODO: Add player record in records.
 
 const GameHeaderDiv = styled.div`
+    position: sticky;
+    top: 0;
     background-color: #222;
-    padding: 0.5em;
     display: flex;
     align-items: center;
     justify-content: space-around;

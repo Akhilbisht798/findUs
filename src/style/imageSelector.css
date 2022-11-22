@@ -1,10 +1,10 @@
 .image-selector-nav {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3em;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1220px) {
     .image-selector-nav {
         grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     }
@@ -19,12 +19,11 @@
 }
 
 .image-selector-nav>a>img {
-    width: 70%;
-    height: 15rem;
+    width: 25em;
+    height: 15em;
+    transition: 0.2s;
 }
 
-.image-selector-nav>a>div {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: black;
+.image-selector-nav>a>img:hover {
+    scale: 1.1;
 }
