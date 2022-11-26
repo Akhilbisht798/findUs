@@ -12,6 +12,32 @@ const AddPlayer = styled.div`
     color: black;
     width: 30%;
     height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2.5em;
+    font-size: 1.5em;
+    border-radius: 7px;
+`
+
+const Input = styled.input`
+    width: 50%;
+    padding: 0.6em;
+`;
+
+const Button = styled.button`
+    width: 30%;
+    height: 3em;
+    background: #2f2f2f;
+    color: white;
+    ont-size: 22px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    &:hover {
+        scale: 1.1;
+    }
 `
 
 const AddLeaderBoard = (props) => {
@@ -22,16 +48,18 @@ const AddLeaderBoard = (props) => {
 
     const AddToLeaderBoard = async () => {
         await addDoc(leaderBoard, { name: playerName, Time: props.Time })
+        props.changeGameOver();
+        window.location = "/LeaderBoard";
     }
 
     return (
         <AddPlayer>
-            <input type="text" placeholder="Enter Your Name" required
+            <Input type="text" placeholder="Enter Your Name" required
                 onChange={(e) => setPlayerName(e.target.value)} />
             <div>Your Record: {props.Time}</div>
-            <button onClick={AddToLeaderBoard}>Submit</button>
+            <Button onClick={AddToLeaderBoard}>Submit</Button>
         </AddPlayer>
     )
 }
-// orderBy('Score', 'desc')
+
 export default AddLeaderBoard;

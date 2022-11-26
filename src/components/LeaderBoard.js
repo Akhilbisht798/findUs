@@ -1,46 +1,46 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase-config";
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, orderBy, firestore } from "firebase/firestore"
 import IndiLeaderBoard from "./LeaderBoardHelper.js/indiLeader";
 import styled from "styled-components";
 import UniverseImage from "../img/icon/universe_113icon.png";
 import loc_narImage from "../img/icon/loc-naricon.png";
 import AnimeImage from "../img/board/anime.jpg"
 
-const ImageHolder = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    @media (max-width: 1220px) {
-        grid-template-columns: repeat(auto-fill, minmax(25em, 1fr))
-    }
+const ImageHolder = styled.div`      
+    display: grid;      
+    grid-template-columns: 1fr 1fr 1fr;      
+    @media (max-width: 1220px) {      
+        grid-template-columns: repeat(auto-fill, minmax(25em, 1fr))      
+    }      
 `
 
-const Icon = styled.img`
-    padding: 1em;
-    width: 25em;
-    height: 15em;
-    transition: 0.5s;
-    &:hover {
-        scale: 1.1;
-    }
+const Icon = styled.img`      
+    padding: 1em;      
+    width: 25em;      
+    height: 15em;      
+    transition: 0.5s;      
+    &:hover {      
+        scale: 1.1;      
+    }      
 `
 
-const Heading = styled.h1`
-    text-align: center;
-    background-color: #222;
-    padding: 0.7em;
+const Heading = styled.h1`      
+    text-align: center;      
+    background-color: #222;      
+    padding: 0.7em;      
 `;
 
-const ParaR = styled.span`
-    font-size: 2rem;
-    font-weight: 600;
-    color: red;
+const ParaR = styled.span`      
+    font-size: 2rem;      
+    font-weight: 600;      
+    color: red;      
 `;
 
-const ParaB = styled.span`
-    font-size: 2rem;
-    font-weight: 600;
-    color: white;
+const ParaB = styled.span`      
+    font-size: 2rem;      
+    font-weight: 600;      
+    color: white;      
 `;
 
 const LeaderBoard = () => {
@@ -79,6 +79,8 @@ const LeaderBoard = () => {
     useEffect(() => {
         const getBoard = async (name, set) => {
             const data = await getDocs(name);
+            // const data = await db.firestore().collection(name)
+            //     .orderBy("Time", "asc")
             set(data.docs.map((doc) => ({ ...doc.data(), found: false })));
         }
         getBoard(Anime_LeaderBoard, setAnime);
@@ -107,4 +109,4 @@ const LeaderBoard = () => {
     )
 }
 
-export default LeaderBoard;
+export default LeaderBoard;      

@@ -56,6 +56,10 @@ const Game = (props) => {
         setShowSelectChar(false)
     }
 
+    const changeGameOver = () => {
+        setGameOver(!gameOver);
+    }
+
     useEffect(() => {
         const GameOver = () => {
             for (let i = 0; i < charecterCoords.length; i++) {
@@ -74,7 +78,7 @@ const Game = (props) => {
 
     return (
         <div>
-            <GameHeader charecter={props.charecter} gameOver={gameOver} map={props.name} />
+            <GameHeader charecter={props.charecter} gameOver={gameOver} map={props.name} changeGameOver={changeGameOver} />
             <img src={props.photo} onClick={onClick} className="game-photo" />
             {showSelectChar && (
                 <SelectCharecter dialogPos={dialogPos} selectedCoords={selectedPos}

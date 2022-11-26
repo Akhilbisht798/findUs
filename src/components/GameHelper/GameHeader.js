@@ -41,9 +41,6 @@ const Para = styled.p`
   text-align: center;
 `;
 
-//TODO: Create a LeaderBoard. 
-//TODO: Add Player to leaderBoard.
-
 const GameHeader = (props) => {
 
     const [timeTaken, setTimeTaken] = useState("");
@@ -67,7 +64,7 @@ const GameHeader = (props) => {
                 })}
             </OuterImageDiv>
             {props.gameOver && (
-                <AddLeaderBoard map={props.map + "_LeaderBoard"} Time={timeTaken} />
+                <AddLeaderBoard map={props.map + "_LeaderBoard"} Time={timeTaken} changeGameOver={props.changeGameOver} />
             )}
         </GameHeaderDiv>
     )
