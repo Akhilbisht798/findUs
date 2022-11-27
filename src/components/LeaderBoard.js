@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase-config";
-import { collection, getDocs, orderBy, firestore } from "firebase/firestore"
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore"
 import IndiLeaderBoard from "./LeaderBoardHelper.js/indiLeader";
 import styled from "styled-components";
 import UniverseImage from "../img/icon/universe_113icon.png";
@@ -78,10 +78,15 @@ const LeaderBoard = () => {
 
     useEffect(() => {
         const getBoard = async (name, set) => {
-            const data = await getDocs(name);
-            // const data = await db.firestore().collection(name)
-            //     .orderBy("Time", "asc")
-            set(data.docs.map((doc) => ({ ...doc.data(), found: false })));
+            const que = query(name, orderBy("Time"))
+            onSnapshot(que, (snapshot) => {
+                let data = [];
+                snapshot.docs.forEach((doc) => {
+                    data.push({ ...doc.data(), found: false });
+                })
+                set(data);
+            })
+
         }
         getBoard(Anime_LeaderBoard, setAnime);
         getBoard(Loc_Nar_LeaderBoard, setLoc_nar);
