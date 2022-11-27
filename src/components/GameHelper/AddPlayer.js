@@ -12,13 +12,17 @@ const AddPlayer = styled.div`
     color: black;
     width: 30%;
     height: 40%;
+    border-radius: 7px;
+    padding-top: 2em;
+`
+
+const Form = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2.5em;
+    gap: 1.5em;
     font-size: 1.5em;
-    border-radius: 7px;
 `
 
 const Input = styled.input`
@@ -35,6 +39,7 @@ const Button = styled.button`
     border-radius: 40px;
     text-align: center;
     box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    transition: 0.2s;
     &:hover {
         scale: 1.1;
     }
@@ -46,18 +51,21 @@ const AddLeaderBoard = (props) => {
 
     const leaderBoard = collection(db, props.map)
 
-    const AddToLeaderBoard = async () => {
+    const AddToLeaderBoard = async (e) => {
+        e.preventDefault();
         await addDoc(leaderBoard, { name: playerName, Time: props.Time })
-        props.changeGameOver();
+        // props.changeGameOver();
         window.location = "/LeaderBoard";
     }
 
     return (
         <AddPlayer>
-            <Input type="text" placeholder="Enter Your Name" required
-                onChange={(e) => setPlayerName(e.target.value)} />
-            <div>Your Record: {props.Time}</div>
-            <Button onClick={AddToLeaderBoard}>Submit</Button>
+            <Form onSubmit={AddToLeaderBoard}>
+                <Input type="text" placeholder="Enter Your Name" required
+                    onChange={(e) => setPlayerName(e.target.value)} />
+                <div>Your Record: {props.Time}</div>
+                <Button type="submit">Submit</Button>
+            </Form>
         </AddPlayer>
     )
 }
